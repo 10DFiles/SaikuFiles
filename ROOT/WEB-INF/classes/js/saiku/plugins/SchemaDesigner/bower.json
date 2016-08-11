@@ -1,0 +1,25 @@
+{
+  "name": "SchemaDesigner",
+  "version": "1.0.0",
+  "description": "Schema Designer",
+  "authors": [
+    "Breno Polanski",
+    "Tom Baber"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fontawesome": "~4.2.0",
+    "notifyjs": "~0.3.2",
+    "jsplumb": "~1.7.2",
+    "brandon-aaron-jquery-outerhtml-function": "*",
+    "easytabs": "~3.2.0",
+    "chosen_v1.3.0": "https://github.com/harvesthq/chosen/releases/download/v1.3.0/chosen_v1.3.0.zip"
+  }
+}

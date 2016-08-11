@@ -1,0 +1,1146 @@
+/* Copyright (C) OSBI Ltd - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Breno Polanski, 2015
+ */
+
+/**
+ * Description: Stylesheet Schema Designer.
+ * Version: 1.0.0
+ * Last update: 2015/03/30
+ * Author: Breno Polanski <breno.polanski@gmail.com>
+ *
+ * TABLE OF CONTENTS:
+ *
+ *    0. SCHEMA DESIGNER
+ *    1. DIALOG
+ *    2. FORM GROUP
+ *    3. COMPONENTS
+ *        - 3.1. TABLE EDITOR
+ *          - 3.1.1. TABLE EDITOR THEME DEFAULT
+ *        - 3.2. CHOSEN
+ *    4. CUBES AND DIMENSIONS
+ *        - 4.1. CSS GRID CONTAINER
+ *        - 4.2. CSS GRID GLOBAL
+ *        - 4.3. CSS GRID GRID 12 COLUMNS
+ *        - 4.4. BUTTONS ACTION
+ *        - 4.5. ACCORDION
+ *        - 4.6. TABS
+ *        - 4.7. TABLE VIEW OPTIONS
+ */
+
+/* ==========================================================================
+   0. SCHEMA DESIGNER
+   ========================================================================== */
+
+.schema-designer .table-list {
+    margin: 0 auto;
+    width: auto;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.schema-designer .dbtable,
+.ui-draggable-dragging .dbtable {
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+}
+
+.schema-designer .table-wrapper,
+.ui-draggable-dragging .table-wrapper {
+    vertical-align: top;
+    display: inline-block;
+    padding: 5px;
+}
+
+.schema-designer .table-wrapper table,
+.ui-draggable-dragging .table-wrapper table {
+    border-spacing: 0;
+    float: left;
+    width: 148px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    table-layout: fixed;
+    border-radius: 5px;
+    cursor: -webkit-grab; 
+    cursor: -moz-grab; 
+    cursor: grab;
+} 
+
+.schema-designer .table-wrapper table td, 
+.schema-designer .table-wrapper table th,
+.ui-draggable-dragging .table-wrapper table td,
+.ui-draggable-dragging .table-wrapper table th { 
+    padding: 3px 10px; 
+}
+
+.schema-designer .table-wrapper table thead th,
+.ui-draggable-dragging .table-wrapper table thead th {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8C8C8C), color-stop(1, #7D7D7D));
+    background: -moz-linear-gradient(center top, #8C8C8C 5%, #7D7D7D 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C8C8C', endColorstr='#7D7D7D');
+    background-color: #8C8C8C; 
+    color: #FFFFFF; 
+    font-size: 12px; 
+    font-weight: bold; 
+    border-radius: 3px 3px 0 0;
+    border-left: 1px solid #A3A3A3;
+    text-align: left; 
+} 
+
+.schema-designer .table-wrapper table thead th:first-child, 
+.ui-draggable-dragging .table-wrapper table thead th:first-child { 
+    border: none; 
+}
+
+.schema-designer .table-wrapper table tbody td,
+.ui-draggable-dragging .table-wrapper table tbody td { 
+    color: #7D7D7D; 
+    border-left: 1px solid #DBDBDB;
+    font-size: 10.5px;
+    font-weight: normal; 
+}
+
+.schema-designer .table-wrapper table tbody tr.selectedKey {
+    background-color: #edf4fa;
+}
+
+.schema-designer .table-wrapper table tbody td:first-child, 
+.ui-draggable-dragging .table-wrapper table tbody td:first-child { 
+    border-left: none; 
+}
+
+.schema-designer .table-wrapper table tbody tr:last-child td, 
+.ui-draggable-dragging .table-wrapper table tbody tr:last-child td { 
+    border-bottom: none; 
+}
+
+.schema-designer table .table-name .table-config,
+.ui-draggable-dragging table .table-name .table-config {
+    float: right;
+    padding: 1px 2px;
+    color: #242424;
+    font-weight: normal;
+}
+
+.schema-designer .workspace-canvas {
+    background-size: 50px 50px;
+    background-image: 
+    linear-gradient(0deg, transparent 9%, 
+        rgba(0, 0, 0, .1) 10%, rgba(0, 0, 0, .1) 12%, transparent 13%, transparent 29%, 
+        rgba(0, 0, 0, .1) 30%, rgba(0, 0, 0, .1) 31%, transparent 32%, transparent 49%, 
+        rgba(0, 0, 0, .1) 50%, rgba(0, 0, 0, .1) 51%, transparent 52%, transparent 69%, 
+        rgba(0, 0, 0, .1) 70%, rgba(0, 0, 0, .1) 71%, transparent 72%, transparent 89%,
+        rgba(0, 0, 0, .1) 90%, rgba(0, 0, 0, .1) 91%, transparent 92%, transparent),
+    linear-gradient(90deg, transparent 9%, 
+        rgba(0, 0, 0, .1) 10%, rgba(0, 0, 0, .1) 12%, transparent 13%, transparent 29%, 
+        rgba(0, 0, 0, .1) 30%, rgba(0, 0, 0, .1) 31%, transparent 32%, transparent 49%, 
+        rgba(0, 0, 0, .1) 50%, rgba(0, 0, 0, .1) 51%, transparent 52%, transparent 69%, 
+        rgba(0, 0, 0, .1) 70%, rgba(0, 0, 0, .1) 71%, transparent 72%, transparent 89%,
+        rgba(0, 0, 0, .1) 90%, rgba(0, 0, 0, .1) 91%, transparent 92%, transparent);
+}
+
+.schema-designer ._jsPlumb_connector, 
+.schema-designer ._jsPlumb_endpoint, 
+.schema-designer .endpointTargetLabel, 
+.schema-designer .endpointSourceLabel {
+    cursor: pointer; 
+}
+
+/* ==========================================================================
+   1. DIALOG
+   ========================================================================== */
+
+.dialog_conn-db .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/toolbar_connect.png') no-repeat;
+}
+
+.dialog_schema-details .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/toolbar_db.png') no-repeat;
+}
+
+.dialog_add-cubes-dim .dialog_icon {
+    display: none;
+}
+
+.dialog_table-edit .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/toolbar_table_edit.png') no-repeat;
+}
+
+.dialog_join .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/toolbar_join.png') no-repeat;
+}
+
+.dialog_open-options .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/modal_schema_designer.png') no-repeat;
+}
+
+.dialog_alert .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/toolbar_alert.png') no-repeat;
+}
+
+.dialog_switch-tables .dialog_icon {
+    margin: 10px;
+    width: 50px;
+    background: url('../image/toolbar_switch_tables.png') no-repeat;
+}
+
+/* ==========================================================================
+   2. FORM GROUP
+   ========================================================================== */
+
+.dialog_open-options .form-group label,
+.dialog_schema-details .form-group label,
+.dialog_conn-db .form-group label,
+.dialog_table-edit .form-group label,
+.dialog_join .form-group label,
+.dialog_add-cubes-dim .form-group label,
+.dialog_switch-tables .form-group label {
+    display: block;
+}
+
+.dialog_open-options .form-group input,
+.dialog_schema-details .form-group input,
+.dialog_conn-db .form-group input,
+.dialog_table-edit .form-group input,
+.dialog_join .form-group input,
+.dialog_add-cubes-dim .form-group input,
+.dialog_switch-tables .form-group input {
+    display: block;
+    padding: 4px;
+    width: 240px;
+}
+
+.dialog_schema-details .form-group input[type="checkbox"] {
+    float: left;
+    width: inherit;
+}
+
+.dialog_open-options .form-group select,
+.dialog_schema-details .form-group select,
+.dialog_conn-db .form-group select,
+.dialog_table-edit .form-group select,
+.dialog_join .form-group select,
+.dialog_add-cubes-dim .form-group select,
+.dialog_switch-tables .form-group select {
+    display: block;
+    padding: 4px;
+    width: 250px;
+    border-color: #ccc;
+}
+
+.dialog_open-options .form-group .form-buttons,
+.dialog_schema-details .form-group .form-buttons,
+.dialog_conn-db .form-group .form-buttons,
+.dialog_table-edit .form-group .form-buttons,
+.dialog_join .form-group .form-buttons,
+.dialog_add-cubes-dim .form-group .form-buttons,
+.dialog_switch-tables .form-group .form-buttons {
+    display: block;
+    margin-top: 10px;
+}
+
+.dialog_open-options .form-group .form-buttons a:nth-child(2),
+.dialog_schema-details .form-group .form-buttons a:nth-child(2),
+.dialog_conn-db .form-group .form-buttons a:nth-child(2),
+.dialog_table-edit .form-group .form-buttons a:nth-child(2),
+.dialog_join .form-group .form-buttons a:nth-child(2),
+.dialog_add-cubes-dim .form-group .form-buttons a:nth-child(2) {
+    margin-left: 5px;
+}
+
+.dialog_add-cubes-dim .form-group .form-buttons a:nth-child(3) {
+    margin-left: 5px;
+}
+
+.dialog_open-options .form-group .error,
+.dialog_schema-details .form-group .error,
+.dialog_conn-db .form-group .error,
+.dialog_table-edit .form-group .error,
+.dialog_join .form-group .error,
+.dialog_add-cubes-dim .form-group .error,
+.dialog_switch-tables .form-group .error {
+    font-style: italic;
+    color: red;
+}
+
+@media (max-width: 1120px) {
+    .dialog_open-options .form-group .input-sm,
+    .dialog_schema-details .form-group .input-sm,
+    .dialog_conn-db .form-group .input-sm,
+    .dialog_table-edit .form-group .input-sm,
+    .dialog_join .form-group .input-sm,
+    .dialog_add-cubes-dim .form-group .input-sm {
+        width: 90%;
+    }
+
+    .dialog_open-options .form-group .select-sm,
+    .dialog_schema-details .form-group .select-sm,
+    .dialog_conn-db .form-group .select-sm,
+    .dialog_table-edit .form-group .select-sm,
+    .dialog_join .form-group .select-sm,
+    .dialog_add-cubes-dim .form-group .select-sm {
+        width: 90%;
+    }
+}
+
+/* ==========================================================================
+   3. COMPONENTS
+   ========================================================================== */
+
+/* 3.1. TOOLBAR
+   ========================================================================== */
+
+.toolbar-action-item .schema-details {
+    background: url('../image/database_edit.png') no-repeat;
+    background-position: 50% 50%;
+    background-size: 16px;
+}
+
+.toolbar-action-item .add-cubes-dim {
+    background: url('../image/table_add.png') no-repeat;
+    background-position: 50% 50%;
+    background-size: 16px;
+}
+
+.toolbar-action-item .create-schema {
+    background: url('../image/script_code.png') no-repeat;
+    background-position: 50% 50%;
+    background-size: 16px;
+}
+
+.toolbar-action-item .help {
+    background: url('../image/help.png') no-repeat;
+    background-position: 50% 50%;
+    background-size: 16px;
+}
+
+/* 3.1. TABLE EDITOR
+   ========================================================================== */
+
+@-webkit-keyframes pop-upwards {
+    0% {
+        -webkit-transform: matrix(0.97, 0, 0, 1, 0, 12);
+                transform: matrix(0.97, 0, 0, 1, 0, 12);
+        opacity: 0;
+    }
+    20% {
+        -webkit-transform: matrix(0.99, 0, 0, 1, 0, 2);
+                transform: matrix(0.99, 0, 0, 1, 0, 2);
+        opacity: 0.7;
+    }
+    40% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
+                transform: matrix(1, 0, 0, 1, 0, -1);
+        opacity: 1;
+    }
+    70% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+                transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+                transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1;
+    }
+}
+@keyframes pop-upwards {
+    0% {
+        -webkit-transform: matrix(0.97, 0, 0, 1, 0, 12);
+            transform: matrix(0.97, 0, 0, 1, 0, 12);
+        opacity: 0;
+    }
+    20% {
+        -webkit-transform: matrix(0.99, 0, 0, 1, 0, 2);
+                transform: matrix(0.99, 0, 0, 1, 0, 2);
+        opacity: 0.7;
+    }
+    40% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
+                transform: matrix(1, 0, 0, 1, 0, -1);
+        opacity: 1;
+    }
+    70% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+                transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+                transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1;
+    }
+}
+
+.table-toolbar-arrow-under:after,
+.table-toolbar-arrow-over:before {
+    position: absolute;
+    left: 50%;
+    display: block;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    content: "";
+}
+
+.table-toolbar-arrow-under:after {
+    border-width: 8px 8px 0 8px;
+}
+
+.table-toolbar-arrow-over:before {
+    top: -8px;
+    border-width: 0 8px 8px 8px;
+}
+
+.table-editor-toolbar {
+	/*max-width: 150px;*/
+    position: absolute;
+    /*top: 0;*/
+    /*left: 0;*/
+    top: -43px;
+    right: 38px;
+    z-index: 5;
+    visibility: hidden;
+    font-size: 16px;
+    font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+.table-editor-toolbar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.table-editor-toolbar li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.table-editor-toolbar li button {
+    display: block;
+    margin: 0;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.33;
+    text-decoration: none;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+.table-editor-toolbar-active {
+    visibility: visible;
+    -webkit-animation: pop-upwards 160ms forwards linear;
+        -ms-animation: pop-upwards 160ms forwards linear;
+            animation: pop-upwards 160ms forwards linear;
+    -webkit-transition: top 0.075s ease-out, left 0.075s ease-out;
+            transition: top 0.075s ease-out, left 0.075s ease-out;
+}
+
+.table-editor-toolbar-form-anchor {
+    display: none;
+}
+
+.table-editor-toolbar-form-anchor input,
+.table-editor-toolbar-form-anchor a {
+    font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+.table-editor-toolbar-form-anchor .table-editor-toolbar-anchor-input,
+.table-editor-toolbar-form-anchor label {
+    margin: 0;
+    padding: 6px;
+    width: 316px;
+    border: none;
+    font-size: 14px;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+.table-editor-toolbar-form-anchor .table-editor-toolbar-anchor-input:focus,
+.table-editor-toolbar-form-anchor label:focus {
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+}
+
+.table-editor-toolbar-form-anchor label {
+    display: block;
+}
+
+.table-editor-toolbar-form-anchor a {
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+.table-editor-placeholder {
+    position: relative;
+}
+
+.table-editor-placeholder:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: attr(data-placeholder) !important;
+    font-style: italic;
+}
+
+/* 3.1.1. TABLE EDITOR THEME DEFAULT
+   ========================================================================== */
+
+.table-toolbar-arrow-under:after {
+    /*top: 50px;*/
+    top: 43px;
+    border-color: #242424 transparent transparent transparent;
+}
+
+.table-toolbar-arrow-over:before {
+    top: -8px;
+    border-color: transparent transparent #242424 transparent;
+}
+
+.table-editor-toolbar {
+    border: 1px solid #000;
+    background-color: #242424;
+    background: -webkit-linear-gradient(bottom, #242424, rgba(36,36,36,.75));
+    background:         linear-gradient(bottom, #242424, rgba(36,36,36,.75));
+    border-radius: 5px;
+    box-shadow: 0 0 3px #000;
+    -webkit-transition: top 0.075s ease-out, left 0.075s ease-out;
+            transition: top 0.075s ease-out, left 0.075s ease-out;
+}
+
+.table-editor-toolbar li button {
+    /*min-width: 50px;*/
+    /*height: 50px;*/
+    min-width: 43px;
+    height: 43px;
+    border: 0;
+    border-right: 1px solid #000;
+    border-left: 1px solid #333;
+    border-left: 1px solid rgba(255,255,255,.1);
+    background-color: #242424;
+    color: #b3b3b1;
+    background: -webkit-linear-gradient(bottom, #242424, rgba(36,36,36,.89));
+    background: linear-gradient(bottom, #242424, rgba(36,36,36,.89));
+    box-shadow: 0 2px 2px rgba(0,0,0,.3);
+    -webkit-transition: background-color 0.2s ease-in;
+            transition: background-color 0.2s ease-in;
+}
+
+.table-editor-toolbar li button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.table-editor-toolbar li .table-editor-button-first {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.table-editor-toolbar li .table-editor-button-last {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.table-editor-toolbar li .table-editor-button-active {
+    background-color: #000;
+    color: #fff;
+    background: -webkit-linear-gradient(bottom, #242424, rgba(0,0,0,.89));
+    background:         linear-gradient(bottom, #242424, rgba(0,0,0,.89));
+}
+
+.table-editor-toolbar-form-anchor {
+    background: #242424;
+    color: #999;
+    border-radius: 5px;
+}
+
+.table-editor-toolbar-form-anchor .table-editor-toolbar-anchor-input {
+    height: 50px;
+    background: #242424;
+    color: #ccc;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+.table-editor-toolbar-form-anchor a {
+    color: #fff;
+}
+
+.table-editor-placeholder:after {
+    color: #b3b3b1;
+}
+
+/* 3.2. CHOSEN
+   ========================================================================== */
+.add-cubes-dim .chosen-container-multi .chosen-choices {
+    position: static !important;  
+    background-image: none !important;
+}
+
+.add-cubes-dim .search-choice,
+.ui-draggable-dragging .search-choice {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+}
+
+.add-cubes-dim .search-choice > span:hover {
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+
+/* ==========================================================================
+   4. CUBES AND DIMENSIONS
+   ========================================================================== */
+
+/* 4.1. CSS GRID CONTAINER
+   ========================================================================== */
+
+.add-cubes-dim .container-12 {
+    width: 92%;
+    height: 100%; 
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+/* 4.2. CSS GRID GLOBAL
+   ========================================================================== */
+
+.add-cubes-dim .grid-1,
+.add-cubes-dim .grid-2,
+.add-cubes-dim .grid-3,
+.add-cubes-dim .grid-4,
+.add-cubes-dim .grid-5,
+.add-cubes-dim .grid-6,
+.add-cubes-dim .grid-7,
+.add-cubes-dim .grid-8,
+.add-cubes-dim .grid-9,
+.add-cubes-dim .grid-10,
+.add-cubes-dim .grid-11,
+.add-cubes-dim .grid-12 {
+    height: 100%;
+    display: inline;
+    float: left;
+    position: relative;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+/* 4.3. CSS GRID GRID 12 COLUMNS
+   ========================================================================== */
+
+.add-cubes-dim .container-12 .grid-1  { width: 6.333%;  }
+.add-cubes-dim .container-12 .grid-2  { width: 14.667%; }
+.add-cubes-dim .container-12 .grid-3  { width: 23.0%;   }
+.add-cubes-dim .container-12 .grid-4  { width: 31.333%; }
+.add-cubes-dim .container-12 .grid-5  { width: 39.667%; }
+.add-cubes-dim .container-12 .grid-6  { width: 48.0%;   }
+.add-cubes-dim .container-12 .grid-7  { width: 56.333%; }
+.add-cubes-dim .container-12 .grid-8  { width: 64.667%; }
+.add-cubes-dim .container-12 .grid-9  { width: 73.0%;   }
+.add-cubes-dim .container-12 .grid-10 { width: 81.333%; }
+.add-cubes-dim .container-12 .grid-11 { width: 89.667%; }
+.add-cubes-dim .container-12 .grid-12 { width: 98.0%;   } 
+
+.add-cubes-dim {
+    width: 100%;
+}
+
+.add-cubes-dim > .panel {
+    width: 100%;
+    height: 100%;
+}
+
+.add-cubes-dim .box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.add-cubes-dim .title {
+    height: 30px;
+    margin: 0;
+}
+
+.add-cubes-dim .title h3 {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    margin: 0;
+}
+
+.add-cubes-dim .stack-tables {
+    position: absolute;
+    top: 31px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    /*overflow: auto; */
+}
+
+.add-cubes-dim ul.tables-list {
+    clear: both;
+    float: left;
+    padding: 2.5% 3% 1% 3%;
+    margin: 0;
+    width: 94%;
+    list-style: none;
+}
+
+/*.add-cubes-dim li.table {
+    padding: 5px;
+    padding-top: 5px;
+    margin-bottom: 7px;
+    height: 30px;
+    text-align: left;
+    font-weight: bold;
+    background-color: #98bfda;
+    cursor: pointer;
+}*/
+
+/*.add-cubes-dim li.table:hover {
+    background-color: #f0f0f0;
+}*/
+
+/*.add-cubes-dim li.table > .name {
+    position: relative;
+    top: 5px;
+    left: 10px;
+}*/
+
+/* 4.4. BUTTONS ACTION
+   ========================================================================== */
+
+.add-cubes-dim a.btn-action {
+    position: absolute;
+    right: 20px;
+    padding: 0px 4px;
+    margin-top: 8px;
+}
+
+.add-cubes-dim a.btn-action:hover {
+    color: #0000ee;
+    /*outline: 1px solid #000;*/
+}
+
+.add-cubes-dim button#add-cube {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+/*.add-cubes-dim .solid {
+    outline: 1px solid #f5f5f5;
+}*/
+
+.add-cubes-dim ul.portlet {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.add-cubes-dim .stack-items {
+    position: absolute;
+    top: 31px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    overflow: auto; 
+}
+
+.add-cubes-dim ul.items {
+    clear: both;
+    float: left;
+    padding: 2.5% 3% 1% 3%;
+    padding-top: 0;
+    margin: 0;
+    width: 94%;
+    list-style: none;
+}
+
+.add-cubes-dim .stack-items ul:nth-child(1) {
+    /*margin-top: 2.3%;*/
+}
+
+/*.add-cubes-dim li.item {
+    padding: 5px;
+    padding-top: 5px;
+    margin-bottom: 3px;
+    height: 30px;
+    text-align: left;
+    font-weight: bold;
+    background-color: #ccc;
+    cursor: pointer;
+}*/
+
+/*.add-cubes-dim li.item:hover {
+    background-color: #f0f0f0;
+}*/
+
+/*.add-cubes-dim li.item > .dimension-name {*/
+/*.add-cubes-dim li.item > span {
+    position: relative;
+    top: 5px;
+    left: 10px;
+}*/
+
+.add-cubes-dim ul.portlet {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.add-cubes-dim .add-attr,
+.add-cubes-dim .add-hier,
+.add-cubes-dim .add-measure-group {
+    float: right;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.add-cubes-dim .add-attr:hover,
+.add-cubes-dim .add-hier:hover,
+.add-cubes-dim .add-measure-group:hover {
+    color: #333;
+}
+
+.add-cubes-dim .view-options {
+    padding: 2.5% 3% 1% 3%;
+    width: 94%;
+}
+
+.add-cubes-dim .context-menu-options {
+    position: absolute;
+    top: 3px;
+    left: 100px;
+    padding: 2px 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.add-cubes-dim .context-menu-options:hover {
+    border: 1px solid #999;
+}
+
+.add-cubes-dim .cursor-grab {
+    cursor: -webkit-grab; 
+    cursor: -moz-grab; 
+    cursor: grab;
+}
+
+/* 4.5. ACCORDION
+   ========================================================================== */
+
+.add-cubes-dim .accordion {
+    margin-top: 2.3%;
+}
+
+.add-cubes-dim .accordion > ul {
+    clear: both;
+    float: left;
+    padding: 2.5% 3% 1% 3%;
+    padding-top: 0;
+    margin: 0;
+    width: 94%;
+    list-style: none;
+}
+
+.add-cubes-dim .accordion > ul > li {
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 1px;
+    position: relative;
+}
+
+.add-cubes-dim .accordion strong {
+    box-sizing: border-box;
+    display: block;
+    height: 34px;
+    margin-top: 1px;
+    padding: 7px;
+    position: relative;
+} 
+
+.add-cubes-dim .accordion strong:after {
+    content: '';
+    border: 4px solid transparent;
+    border-top: 7px solid #242424;
+    position: absolute;
+    top: 15px;
+    right: 15px; 
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}  
+
+.add-cubes-dim .accordion input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.add-cubes-dim .accordion input:checked + strong:after {
+    top: 7px;
+    right: 15px;
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.add-cubes-dim .accordion input:checked + strong + div {
+    /*padding: 10px 20px;*/
+    height: auto;
+/*    height: 100px;
+    overflow-y: auto;*/
+}
+
+.add-cubes-dim .accordion div {
+    background: #fff;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
+    height: 0;
+    /*padding: 0 20px;*/
+    overflow: hidden;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.add-cubes-dim .accordion li.table {
+    background-color: background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8C8C8C), color-stop(1, #7D7D7D));
+    background: -moz-linear-gradient(center top, #8C8C8C 5%, #7D7D7D 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C8C8C', endColorstr='#7D7D7D');
+    background-color:#8C8C8C; 
+    color:#FFFFFF; 
+    font-size: 12px; 
+    font-weight: bold; 
+}
+
+/* TODO: Update style */
+.add-cubes-dim .accordion li.item {
+    background-color: #666; 
+    color:#FFFFFF; 
+    font-size: 12px; 
+    font-weight: bold; 
+}
+
+.add-cubes-dim .accordion li.item .cube-name a,
+.add-cubes-dim .accordion li.item .dimension-name a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.add-cubes-dim .accordion li.item .cube-name a:hover,
+.add-cubes-dim .accordion li.item .dimension-name a:hover {
+    text-decoration: underline;
+}
+
+.add-cubes-dim .accordion div table { 
+    text-align: left; 
+    width: 100%; 
+}
+
+.add-cubes-dim .accordion div table td { 
+    padding: 3px 10px; 
+}
+
+.add-cubes-dim .accordion div table tbody td { 
+    color: #7D7D7D; 
+    font-size: 10.5px;
+    font-weight: normal; 
+}
+
+/* style cube and dim */
+
+.add-cubes-dim .accordion div .table-items {
+    border-spacing: 0;
+    float: left;
+    width: 100%;
+    text-align: left;
+    background-color: #fff;
+    /*border: 1px solid #ccc;*/
+    border-bottom: 1px solid #ccc;
+    table-layout: fixed;
+    /*border-radius: 5px;*/
+    /*cursor: -webkit-grab; 
+    cursor: -moz-grab; 
+    cursor: grab;*/
+} 
+
+.add-cubes-dim .accordion div .table-items td, 
+.add-cubes-dim .accordion div .table-items th { 
+    padding: 3px 10px; 
+}
+
+.add-cubes-dim .accordion div .table-items thead th {
+/*    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8C8C8C), color-stop(1, #7D7D7D));
+    background: -moz-linear-gradient(center top, #8C8C8C 5%, #7D7D7D 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C8C8C', endColorstr='#7D7D7D');*/
+    background-color: #f9f9f9; 
+    color: #000; 
+    font-size: 12px; 
+    font-weight: bold; 
+    /*border-radius: 3px 3px 0 0;*/
+    /*border-left: 1px solid #ccc;*/
+    /*border-bottom: 1px solid #ccc;*/
+    text-align: left; 
+} 
+
+.add-cubes-dim .accordion div .table-items thead th:first-child { 
+    width: 70%;
+    border-left: none; 
+}
+
+.add-cubes-dim .accordion div .table-items tbody td { 
+    color: #7D7D7D; 
+    /*border-left: 1px solid #DBDBDB;*/
+    font-size: 10.5px;
+    font-weight: normal; 
+}
+
+.add-cubes-dim .accordion div .table-items tbody td:first-child { 
+    border-left: none; 
+}
+
+.add-cubes-dim .accordion div .table-items tbody tr:last-child td { 
+    border-bottom: none; 
+}
+
+.add-cubes-dim .accordion div .table-items .action {
+    position: relative;
+    float: right;
+    padding: 1px 2px;
+    margin-left: 10px;
+}
+
+.add-cubes-dim .accordion div .table-items .fa-plus-square {
+    color: green;
+}
+
+/* style draggable accordion */
+
+.add-cubes-dim .accordion li.table.ui-draggable-dragging {
+    background-color: background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8C8C8C), color-stop(1, #7D7D7D));
+    background: -moz-linear-gradient(center top, #8C8C8C 5%, #7D7D7D 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C8C8C', endColorstr='#7D7D7D');
+    background-color:#8C8C8C; 
+    color:#FFFFFF; 
+    font-size: 12px; 
+    font-weight: bold;
+    height: auto !important;
+    width: 330px;
+    border-radius: 0;
+    z-index: 100;
+}
+
+.add-cubes-dim .accordion li.table.ui-draggable-dragging strong {
+    text-align: left;
+}
+
+.add-cubes-dim .over {
+    border: 2px dashed #333;
+}
+
+/* 4.6. TABS
+   ========================================================================== */
+
+.add-cubes-dim .etabs { 
+    margin: 0; 
+    padding: 0;
+}
+
+.add-cubes-dim .tab { 
+    display: inline-block; 
+    *display: inline; 
+    border: 1px solid #fff; 
+    border-bottom: none; 
+    zoom: 1; 
+}
+
+.add-cubes-dim .tab a { 
+    display: block; 
+    padding: 0 10px; 
+    font-size: 12px; 
+    line-height: 2em; 
+    text-decoration: none;
+    outline: none; 
+}
+
+.add-cubes-dim .tab:hover { 
+    background-color: #f0f0f0;
+}
+
+.add-cubes-dim .tab.active { 
+    position: relative;
+    top: 1px;
+    padding-top: 6px;
+    background: #fff;
+    border-color: #999;
+}
+
+.add-cubes-dim .tab a.active { 
+    font-weight: bold; 
+}
+
+.add-cubes-dim .tab-container .panel-container { 
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid #999; 
+}
+
+.add-cubes-dim .panel-container { 
+    margin-bottom: 10px; 
+}
+
+/* 4.7. TABLE VIEW OPTIONS
+   ========================================================================== */
+
+.add-cubes-dim .view-options-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #ccc;
+}
+
+.add-cubes-dim .view-options-table .action {
+    position: relative;
+    float: right;
+    padding: 1px 2px;
+    margin-left: 10px;
+}

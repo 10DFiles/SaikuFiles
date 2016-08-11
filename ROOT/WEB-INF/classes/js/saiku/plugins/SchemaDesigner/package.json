@@ -1,0 +1,15 @@
+{
+  "name": "SchemaDesigner",
+  "version": "1.0.0",
+  "description": "Schema Designer",
+  "authors": [
+    "Breno Polanski",
+    "Tom Baber"
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^1.0.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-csscomb": "^3.0.0"
+  }
+}
